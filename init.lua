@@ -75,7 +75,6 @@ require("lazy").setup({
     'nvim-telescope/telescope.nvim', tag = '0.1.5',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      "debugloop/telescope-undo.nvim"
     }
   },
   { "folke/neodev.nvim", opts = {} },
@@ -125,7 +124,10 @@ local on_attach = function(_, bufnr)
   nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
   nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
   nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+  nmap('<leader>rn', vim.lsp.buf.rename, 'Rename')
+  nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
   nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  nmap('gD', vim.lsp.buf.declaration, 'Goto declaration')
 end
 
 require("lualine").setup({})
@@ -217,27 +219,7 @@ require('telescope').setup{
       ".git",
     }
   },
-  extensions = {
-    undo = {
-      mappings = {
-        i = {
-          ["<cr>"] = require("telescope-undo.actions").yank_additions,
-          ["<S-cr>"] = require("telescope-undo.actions").yank_deletions,
-          ["<C-cr>"] = require("telescope-undo.actions").restore,
-          ["<C-y>"] = require("telescope-undo.actions").yank_deletions,
-          ["<C-r>"] = require("telescope-undo.actions").restore,
-        },
-        n = {
-          ["y"] = require("telescope-undo.actions").yank_additions,
-          ["Y"] = require("telescope-undo.actions").yank_deletions,
-          ["u"] = require("telescope-undo.actions").restore,
-        },
-      },
-    },
-  },
 }
-
-require("telescope").load_extension("undo")
 
 -- Telescope shortcuts
 vim.keymap.set('n', '<leader>sf',
@@ -251,5 +233,3 @@ require('telescope.builtin').keymaps, { desc = 'Search Keymaps' })
 
 vim.keymap.set('n', '<leader>sd',
 require('telescope.builtin').diagnostics, { desc = 'Search Diagnostics' })
-
-vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
