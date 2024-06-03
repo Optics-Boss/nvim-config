@@ -88,7 +88,7 @@ require("lazy").setup({
   { "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     opts = {
-      ensure_installed = { 'lua', 'rust' },
+      ensure_installed = { 'lua', 'rust', 'latex' },
       auto_install = true,
       highlight = {
         enable = true,
