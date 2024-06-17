@@ -98,6 +98,10 @@ require("lazy").setup({
       require('nvim-treesitter.install').prefer_git = true
       require('nvim-treesitter.configs').setup(opts)
     end,
+  },
+  {
+    'alvarosevilla95/luatab.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' }
   }
 })
 
@@ -173,6 +177,7 @@ require("lspconfig").rust_analyzer.setup ({
 })
 
 require("lspconfig").tsserver.setup ({
+    capabilities = capabilities,
     on_attach = on_attach,
 })
 
@@ -251,3 +256,6 @@ require('telescope.builtin').keymaps, { desc = 'Search Keymaps' })
 
 vim.keymap.set('n', '<leader>sd',
 require('telescope.builtin').diagnostics, { desc = 'Search Diagnostics' })
+
+-- Luatab
+require('luatab').setup{}
