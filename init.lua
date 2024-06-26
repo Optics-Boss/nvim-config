@@ -270,3 +270,5 @@ require('telescope.builtin').diagnostics, { desc = 'Search Diagnostics' })
 
 -- Luatab
 require('luatab').setup{}
+
+require('Comment').setup()
