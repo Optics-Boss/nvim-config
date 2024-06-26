@@ -9,6 +9,7 @@ vim.opt.showmode = false
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+-- Vim custom keymap
 vim.keymap.set('n', '[d',
   vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" }
 )
@@ -21,6 +22,10 @@ vim.keymap.set('n', '<leader>e',
 
 vim.keymap.set('n', '<leader>q',
   vim.diagnostic.setloclist, { desc = "Open dianostic quickfix list" }
+)
+
+vim.keymap.set('n', 'nt',
+  vim.cmd.tabnew
 )
 
 vim.api.nvim_create_autocmd('TextYankPost', {
