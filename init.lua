@@ -93,7 +93,7 @@ require("lazy").setup({
   { "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     opts = {
-      ensure_installed = { 'lua', 'rust', 'latex' },
+      ensure_installed = { 'lua', 'rust', 'latex', 'go' },
       auto_install = true,
       highlight = {
         enable = true,
@@ -178,6 +178,12 @@ require("lspconfig").lua_ls.setup ({
 })
 
 require("lspconfig").rust_analyzer.setup ({
+    capabilities = capabilities,
+    on_attach = on_attach,
+})
+
+require("lspconfig").gopls.setup ({
+    capabilities = capabilities,
     on_attach = on_attach,
 })
 
