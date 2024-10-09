@@ -90,20 +90,20 @@ require("lazy").setup({
       'nvim-lualine/lualine.nvim',
       dependencies = { 'nvim-tree/nvim-web-devicons' }
   },
-  { "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    opts = {
-      ensure_installed = { 'lua', 'rust', 'latex', 'go' },
-      auto_install = true,
-      highlight = {
-        enable = true,
-      },
-    },
-    config = function(_, opts)
-      require('nvim-treesitter.install').prefer_git = true
-      require('nvim-treesitter.configs').setup(opts)
-    end,
-  },
+  -- { "nvim-treesitter/nvim-treesitter",
+  --   build = ":TSUpdate",
+  --   opts = {
+  --     ensure_installed = { 'lua', 'rust', 'latex', 'go', 'ruby' },
+  --     auto_install = true,
+  --     highlight = {
+  --       enable = true,
+  --     },
+  --   },
+  --   config = function(_, opts)
+  --     require('nvim-treesitter.install').prefer_git = true
+  --     require('nvim-treesitter.configs').setup(opts)
+  --   end,
+  -- },
   {
     'alvarosevilla95/luatab.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' }
@@ -191,12 +191,17 @@ require("lspconfig").gopls.setup ({
     on_attach = on_attach,
 })
 
-require("lspconfig").tsserver.setup ({
+require("lspconfig").jdtls.setup ({
     capabilities = capabilities,
     on_attach = on_attach,
 })
 
-require("lspconfig").jdtls.setup ({
+require("lspconfig").clangd.setup ({
+    capabilities = capabilities,
+    on_attach = on_attach,
+})
+
+require("lspconfig").solargraph.setup ({
     capabilities = capabilities,
     on_attach = on_attach,
 })
