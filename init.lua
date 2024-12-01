@@ -206,6 +206,11 @@ require("lspconfig").solargraph.setup ({
     on_attach = on_attach,
 })
 
+require("lspconfig").hls.setup ({
+    capabilities = capabilities,
+    on_attach = on_attach,
+})
+
 -- Cmp config
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
