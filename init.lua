@@ -216,6 +216,11 @@ require("lspconfig").phpactor.setup ({
     on_attach = on_attach,
 })
 
+require("lspconfig").volar.setup ({
+    capabilities = capabilities,
+    on_attach = on_attach,
+})
+
 -- Cmp config
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
@@ -270,6 +275,7 @@ require('telescope').setup{
     file_ignore_patterns = {
       "node_modules",
       "build",
+      "vendor",
       "target",
       ".git",
     }
