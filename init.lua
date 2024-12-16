@@ -24,7 +24,7 @@ vim.keymap.set('n', '<leader>q',
   vim.diagnostic.setloclist, { desc = "Open dianostic quickfix list" }
 )
 
-vim.keymap.set('n', 'nt',
+vim.keymap.set('n', '<leader>nt',
   vim.cmd.tabnew
 )
 
@@ -207,6 +207,11 @@ require("lspconfig").solargraph.setup ({
 })
 
 require("lspconfig").hls.setup ({
+    capabilities = capabilities,
+    on_attach = on_attach,
+})
+
+require("lspconfig").phpactor.setup ({
     capabilities = capabilities,
     on_attach = on_attach,
 })
